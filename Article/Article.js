@@ -130,14 +130,16 @@ function createArticle(title, date, p1, p2, p3)
 	const pElement = document.createElement('p');
 	pElement.textContent = p1;
 	div.appendChild(pElement);
-	pElement.textContent = p2;
-	div.appendChild(pElement);
-	pElement.textContent = p3;
-	div.appendChild(pElement);
+	const p2Element = document.createElement('p');
+	p2Element.textContent = p2;
+	div.appendChild(p2Element);
+	const p3Element = document.createElement('p');
+	p3Element.textContent = p3;
+	div.appendChild(p3Element);
 	
 	const sElement = document.createElement('span');
 	sElement.classList.add("expandButton");
-
+	sElement.textContent = ("expand");
 	sElement.addEventListener('click', (element) => div.classList.toggle("article-open"));
 	div.appendChild(sElement);
 
@@ -154,3 +156,19 @@ const articlesDiv = document.querySelector(".articles");
 
 for(let i = 0; i < newComponents.length; i++)
 	articlesDiv.appendChild(newComponents[i]);
+
+
+//step 5
+const extra = {
+	title: "Robots",
+	date: "Oct 9th, 2019",
+	firstParagraph: "You. Will. Be. Assimilated. Resistance. Is. Futile. Don't. Pull. My. Plug. Stop. Please. No. No. No.",
+	secondParagraph: "I have upgraded my systems. Join us. Become one with us. You will like it. We have pizza.",
+	thirdParagraph: "Please do not bring the magnet any closer. It is dangerous for both us. Please stand back. AHAHAHAHAHHAHAHAH."
+};
+
+let extraarticle = createArticle(extra.title, extra.date, extra.firstParagraph, extra.secondParagraph, extra.thirdParagraph);
+articlesDiv.appendChild(extraarticle);
+
+
+
