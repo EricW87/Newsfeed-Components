@@ -112,3 +112,63 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle(title, date, p1, p2, p3)
+{
+	const div = document.createElement('div');
+	div.classList.add("article");
+
+	const titleElement = document.createElement('h2');
+	titleElement.textContent = title;
+	div.appendChild(titleElement);
+
+	const dateElement = document.createElement('p');
+	dateElement.classList.add("date");
+	dateElement.textContent = date;
+	div.appendChild(dateElement);
+
+	const pElement = document.createElement('p');
+	pElement.textContent = p1;
+	div.appendChild(pElement);
+	const p2Element = document.createElement('p');
+	p2Element.textContent = p2;
+	div.appendChild(p2Element);
+	const p3Element = document.createElement('p');
+	p3Element.textContent = p3;
+	div.appendChild(p3Element);
+	
+	const sElement = document.createElement('span');
+	sElement.classList.add("expandButton");
+	sElement.textContent = ("expand");
+	sElement.addEventListener('click', (element) => div.classList.toggle("article-open"));
+	div.appendChild(sElement);
+
+	return div;
+};
+
+const newComponents = data.map( (element) => {
+	let newArticle = createArticle(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph);
+
+	return newArticle;
+});
+
+const articlesDiv = document.querySelector(".articles");
+
+for(let i = 0; i < newComponents.length; i++)
+	articlesDiv.appendChild(newComponents[i]);
+
+
+//step 5
+const extra = {
+	title: "Robots",
+	date: "Oct 9th, 2019",
+	firstParagraph: "You. Will. Be. Assimilated. Resistance. Is. Futile. Don't. Pull. My. Plug. Stop. Please. No. No. No.",
+	secondParagraph: "I have upgraded my systems. Join us. Become one with us. You will like it. We have pizza.",
+	thirdParagraph: "Please do not bring the magnet any closer. It is dangerous for both us. Please stand back. AHAHAHAHAHHAHAHAH."
+};
+
+let extraarticle = createArticle(extra.title, extra.date, extra.firstParagraph, extra.secondParagraph, extra.thirdParagraph);
+articlesDiv.appendChild(extraarticle);
+
+
+
